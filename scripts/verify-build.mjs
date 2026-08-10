@@ -39,6 +39,7 @@ const checks = [
   [rss.includes("MS Clarity 사용기"), "imported RSS item"],
   [!home.includes("this is meta description"), "sample metadata removed"],
   [!home.includes("Astroplate"), "template branding removed from home"],
+  [home.includes('class="mb-6 break-words"'), "card summaries wrap on mobile"],
 ];
 
 const failed = checks.filter(([ok]) => !ok);
