@@ -45,5 +45,4 @@ Astroplate의 현재 `/blog` 목록 레이아웃을 변경하지 않고 Yongjin�
 ## Open Questions
 
 - 최종 블로그명·소개 문구·프로필 이미지
-- 옮길 실제 기존 글과 썸네일
 - 향후 커스텀 도메인

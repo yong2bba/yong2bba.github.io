@@ -29,3 +29,11 @@
 **Status:** accepted
 
 **Decision:** Astroplate의 Lorem ipsum·샘플 작성자·샘플 SNS를 공개하지 않는다.
+
+## 2026-08-10 — Homebox 실제 글 12개 우선 이관
+
+**Status:** accepted
+
+**Decision:** 현재 `yongjin.dev`에 존재하는 Markdown 12개와 Ghost 자산 221개를 우선 공개한다. 옛 `yongjins.dev`에서 본문을 확보하지 못한 11개는 포함하지 않는다.
+
+**Preservation:** 제목·설명·날짜·태그·본문·코드·이미지를 보존한다. 임시 이전 안내문은 제거하고, 함께 이관되는 글을 가리키는 내부 링크 5개만 새 `/blog/{slug}` 경로로 바꾼다.

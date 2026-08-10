@@ -12,3 +12,10 @@
 - 공개 검증에서 CI의 UTC 시간대로 날짜가 하루 당겨지는 문제를 발견해 `Asia/Seoul` 표시 시간대를 고정했다.
 - PR #1·#2를 병합하고 GitHub Pages Actions 배포 및 공개 모바일 회귀검증을 완료했다.
 - Workboard `t_5a6823fc`에 Alpha(default) 담당, 검증 증거, accepted 결정, blockers 없음으로 완료 기록했다.
+- Homebox `yongjin.dev`의 실제 Markdown 12개를 Astro 콘텐츠로 변환하고 시험 글을 제거했다.
+- Ghost 자산 221개를 SHA-256 동일하게 복사했고 본문 자산 참조 83개·누락 0개를 확인했다.
+- 임시 이전 안내문만 제거하고 함께 이관되는 글의 내부 링크 5개를 새 경로로 변경했다.
+- 이관 검증을 `verify-build.mjs`에 추가하고 Workboard `t_7d6fee45`에 작업을 등록했다.
+- Astroplate 이미지 glob에 WebP를 추가해 이관 글 대표 이미지 최적화 경고를 제거했다.
+- 카드 요약에서 Markdown을 먼저 제거한 뒤 자르도록 수정해 390px 가로 넘침을 해결했다.
+- 32페이지 build, check 0/0/0, 정적 검증 20/20과 데스크톱·390px 브라우저 QA를 통과했다.
