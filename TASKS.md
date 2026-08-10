@@ -2,7 +2,7 @@
 
 ## Now
 
-- [ ] 콘텐츠 이전 PR CI 통과·병합·Pages 배포 검증
+- 없음
 
 ## Next
 
@@ -28,3 +28,5 @@
 - [x] 자산 참조 83개 누락 0 및 본문 12/12 exact 대응 확인
 - [x] build/check/verify:build/verify:migration 로컬 검증
 - [x] 데스크톱·390px 모바일·검색·TOC 브라우저 QA
+- [x] 콘텐츠 이전 PR #4 CI 통과·main 병합
+- [x] main Pages 배포와 공개 96개 URL·브라우저 회귀검증

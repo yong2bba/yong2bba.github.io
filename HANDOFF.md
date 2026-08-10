@@ -1,9 +1,9 @@
 ---
-status: review
+status: complete
 updated: 2026-08-10
-summary: "Homebox yongjin.dev 글 12개와 자산 221개 이전·로컬 검증 완료"
-current_focus: "콘텐츠 이전 PR의 CI·병합·Pages 배포 검증"
-next_step: "PR CI 통과 후 main 병합·Pages 공개 주소 확인"
+summary: "Homebox yongjin.dev 글 12개와 자산 221개 이전·Pages 공개 완료"
+current_focus: "없음"
+next_step: "사용자 결정 시 최종 블로그명·도메인 확정"
 blockers: []
 ---
 
@@ -21,6 +21,8 @@ blockers: []
 
 ## Current State
 
+- 콘텐츠 이전 PR #4가 main에 병합됐고 GitHub Pages 배포가 성공했다.
+- 공개 12개 글·83개 참조 자산과 데스크톱·모바일·검색·TOC를 재검증했다.
 - 콘텐츠 본문 12/12 exact 대응, 자산 참조 83/83 존재, 누락 0으로 로컬 검증했다.
 - `main`에 PR #1과 날짜 교정 PR #2가 병합됐다.
 - `https://yong2bba.github.io/`에 공개됐다.
@@ -28,7 +30,7 @@ blockers: []
 
 ## Next Safe Action
 
-콘텐츠 이전 브랜치를 로컬·브라우저에서 검증한 뒤 PR을 만들고 CI 통과 후 병합·Pages 배포를 확인한다.
+사용자가 원하면 최종 블로그명·소개 문구·커스텀 도메인을 별도 범위로 확정한다.
 
 ## Needs User Decision
 
@@ -45,6 +47,8 @@ blockers: []
 - `pnpm verify:build`: 15/15 PASS
 - `pnpm verify:migration`: 12 posts, 221 assets, 83 refs, missing 0 PASS
 - 브라우저: 1440×1000·390×844 overflow 0, broken image 0, 검색·TOC hash 이동 PASS
+- PR #4 `Build and verify`: PASS, main Pages run `31353401751`: build·deploy PASS
+- 공개 URL: 홈+12개 글+83개 참조 자산 총 96개 HTTP 200
 - `pnpm peers check`: PASS
 - `pnpm audit --prod`: No known vulnerabilities found
 - `pnpm build`: 11 pages built
