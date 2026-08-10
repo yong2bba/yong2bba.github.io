@@ -15,7 +15,7 @@ draft: false
 
 안녕하세요. 서비스기획자 용진입니다.
 
-돈 아끼려고 n8n 셀프호스팅 했다가 홈 서버 만든 이야기 [(1) n8n 호스팅과 traefik](https://yongjins.dev/story-homeserver-01/?ref=yongjin.dev)과 [(2) Cloudflare tunnel](https://yongjins.dev/story-homeserver-02/?ref=yongjin.dev) 모두 읽어주신 분들, 둘 중 하나만 읽어주신 분들, 둘 다 안읽었지만 이 글을 보는 분 모두 감사 인사 드립니다.
+돈 아끼려고 n8n 셀프호스팅 했다가 홈 서버 만든 이야기 [(1) n8n 호스팅과 traefik](/blog/homeserver-01-n8n-traefik)과 [(2) Cloudflare tunnel](/blog/homeserver-02-cloudflare-tunnel) 모두 읽어주신 분들, 둘 중 하나만 읽어주신 분들, 둘 다 안읽었지만 이 글을 보는 분 모두 감사 인사 드립니다.
 
 원래는 N8N 이외의 서비스 설치 관련된 이야기를 해볼까 했는데, 사람들이 N8N에 관심이 높은 거 같아 일단 현재 제 설정을 한번 공유해볼까 합니다.
 

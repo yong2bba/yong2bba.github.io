@@ -13,7 +13,7 @@ draft: false
 
 ![Re:Server output](/assets/ghost/re-server-output/01-feature-1.webp)
 
-서비스기획자 용진입니다. [**Re:Server - 03. 서버보다 AI 이야기가 더 많은 서버 재설치 마지막 이야기**](https://www.yongjin.dev/re-server-03/)에서 나온 결과물만 따로 포스팅합니다.
+서비스기획자 용진입니다. [**Re:Server - 03. 서버보다 AI 이야기가 더 많은 서버 재설치 마지막 이야기**](/blog/re-server-03)에서 나온 결과물만 따로 포스팅합니다.
 
 ## docker-compose.yml
 

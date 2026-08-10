@@ -12,6 +12,11 @@ for (const file of required) await access(file);
 
 const home = await readFile("dist/index.html", "utf8");
 const post = await readFile("dist/blog/clarity/index.html", "utf8");
+const relatedPost = await readFile("dist/blog/re-server-03/index.html", "utf8");
+const homeServerPost = await readFile(
+  "dist/blog/homeserver-03-nowadays/index.html",
+  "utf8",
+);
 const rss = await readFile("dist/rss.xml", "utf8");
 
 const checks = [
@@ -32,7 +37,9 @@ const checks = [
   ],
   [post.includes('"@type":"BlogPosting"'), "BlogPosting JSON-LD"],
   [
-    post.includes(encodeURIComponent("https://yong2bba.github.io/blog/clarity")),
+    post.includes(
+      encodeURIComponent("https://yong2bba.github.io/blog/clarity"),
+    ),
     "share links use canonical post URL",
   ],
   [rss.includes("<language>ko-KR</language>"), "RSS language"],
@@ -40,6 +47,16 @@ const checks = [
   [!home.includes("this is meta description"), "sample metadata removed"],
   [!home.includes("Astroplate"), "template branding removed from home"],
   [home.includes('class="mb-6 break-words"'), "card summaries wrap on mobile"],
+  [
+    !relatedPost.includes("![돈 아끼려고"),
+    "card summaries strip Markdown before truncation",
+  ],
+  [
+    relatedPost.includes('href="/blog/re-server-output"') &&
+      homeServerPost.includes('href="/blog/homeserver-01-n8n-traefik"') &&
+      homeServerPost.includes('href="/blog/homeserver-02-cloudflare-tunnel"'),
+    "migrated cross-post links stay on the new blog",
+  ],
 ];
 
 const failed = checks.filter(([ok]) => !ok);
