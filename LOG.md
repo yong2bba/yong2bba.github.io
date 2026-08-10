@@ -2,6 +2,12 @@
 
 ## 2026-08-10
 
+- Homebox `yongjin.dev` 복구본에서 Markdown 12개와 관련 자산 221개를 콘텐츠 브랜치로 이전했다.
+- 기존 Ghost 이전 안내문만 제거하고 slug·날짜·태그·코드·링크·이미지·본문을 보존했다.
+- 임시 출시 글 `post-1.md`를 제거했으며 기존 레이아웃과 컴포넌트는 변경하지 않았다.
+- 소스/타깃 본문 12/12 exact 대응, 자산 참조 83/83 존재, 누락 0을 확인했다.
+- build 32페이지, check 진단 0, 정적 검증 15/15와 이전 검증을 통과했다.
+- 실제 Chrome에서 1440×1000·390×844 overflow 0, broken image 0, 검색 결과와 TOC hash 이동을 확인했다.
 - Astroplate 템플릿으로 `yong2bba.github.io` 저장소를 생성했다.
 - `/blog` 디자인 유지, `/` 홈 연결, RSS·TOC·Declarative WebMCP 도입 결정을 기록했다.
 - 한국어 브랜딩·콘텐츠·날짜·404와 canonical·Open Graph·JSON-LD를 적용했다.
