@@ -13,15 +13,42 @@ const {
   description,
   slug,
   className,
-}: { title?: string; description?: string; slug?: string; className?: string } =
-  Astro.props;
+}: {
+  title?: string;
+  description?: string;
+  slug?: string;
+  className?: string;
+} = Astro.props;
+
+const pageUrl = new URL(
+  (slug || "").replace(/^\/+/, ""),
+  `${base_url.replace(/\/$/, "")}/`,
+).toString();
+const facebookUrl = `https://facebook.com/sharer/sharer.php?${new URLSearchParams({ u: pageUrl })}`;
+const twitterUrl = `https://twitter.com/intent/tweet/?${new URLSearchParams({ text: title || "", url: pageUrl })}`;
+const linkedinUrl = `https://www.linkedin.com/shareArticle?${new URLSearchParams(
+  {
+    mini: "true",
+    url: pageUrl,
+    title: title || "",
+    summary: description || "",
+    source: base_url,
+  },
+)}`;
+const pinterestUrl = `https://pinterest.com/pin/create/button/?${new URLSearchParams(
+  {
+    url: pageUrl,
+    media: "",
+    description: description || "",
+  },
+)}`;
 ---
 
 <ul class={`${className}`}>
   <li class="inline-block">
     <a
-      aria-label="facebook share button"
-      href={`https://facebook.com/sharer/sharer.php?u=${base_url}/${slug}`}
+      aria-label="페이스북에 공유"
+      href={facebookUrl}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -30,8 +57,8 @@ const {
   </li>
   <li class="inline-block">
     <a
-      aria-label="twitter share button"
-      href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/${slug}`}
+      aria-label="X에 공유"
+      href={twitterUrl}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -40,8 +67,8 @@ const {
   </li>
   <li class="inline-block">
     <a
-      aria-label="linkedin share button"
-      href={`https://www.linkedin.com/shareArticle?mini=true&url=${base_url}/${slug}&title=${title}&summary=${description}&source=${base_url}`}
+      aria-label="링크드인에 공유"
+      href={linkedinUrl}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -50,8 +77,8 @@ const {
   </li>
   <li class="inline-block">
     <a
-      aria-label="pinterest share button"
-      href={`https://pinterest.com/pin/create/button/?url=${base_url}/${slug}&media=&description=${description}`}
+      aria-label="핀터레스트에 공유"
+      href={pinterestUrl}
       target="_blank"
       rel="noreferrer noopener"
     >

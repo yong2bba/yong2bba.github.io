@@ -1,17 +1,16 @@
 {
   "site": {
-    "title": "Astroplate",
-    "base_url": "https://astroplate.netlify.app",
+    "title": "Yongjin",
+    "base_url": "https://yong2bba.github.io",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
-    "logo_darkmode": "/images/logo-darkmode.png",
+    "logo": "",
+    "logo_darkmode": "",
     "logo_width": "150",
     "logo_height": "30",
-    "logo_text": "Astroplate"
+    "logo_text": "Yongjin"
   },
-
   "settings": {
     "search": true,
     "sticky_header": true,
@@ -21,46 +20,36 @@
     "summary_length": 200,
     "blog_folder": "blog"
   },
-
   "announcement": {
-    "enable": true,
-    "content": "<span class='text-center block'>♥️ Loving Astroplate? <a class='underline' href='https://github.com/zeon-studio/astroplate' target='_blank' rel='noopener'>Please ⭐️ on Github</a></span>",
+    "enable": false,
+    "content": "",
     "expire_days": 7
   },
-
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [Zeon Studio](https://zeon.studio)"
+    "copyright": "© 2026 Yongjin. All rights reserved."
   },
-
   "navigation_button": {
     "enable": true,
-    "label": "Github",
-    "link": "https://github.com/zeon-studio/astroplate"
-  },
-
-  "google_tag_manager": {
-    "enable": false,
-    "gtm_id": "GTM-XXXXXX"
+    "label": "GitHub",
+    "link": "https://github.com/yong2bba/yong2bba.github.io"
   },
 
   "disqus": {
-    "enable": true,
-    "shortname": "themefisher-template",
+    "enable": false,
+    "shortname": "",
     "settings": {}
   },
-
   "metadata": {
-    "meta_author": "zeon.studio",
+    "meta_author": "Yongjin",
     "meta_image": "/images/og-image.png",
-    "meta_description": "astro and tailwind boilerplate"
+    "meta_description": "일과 기술, 배우고 생각한 것을 기록합니다."
   },
-
   "llms": {
     "generate_llms_txt": true,
     "generate_llms_full_txt": true,
     "generate_individual_md": true,
     "include": [],
-    "exclude": []
+    "exclude": ["/404", "/contact", "/elements", "/privacy-policy"]
   }
 }

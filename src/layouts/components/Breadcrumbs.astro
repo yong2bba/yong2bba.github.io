@@ -6,7 +6,7 @@ const { className }: { className?: string } = Astro.props;
 const paths = Astro.url.pathname.split("/").filter((x) => x);
 let parts = [
   {
-    label: "Home",
+    label: "홈",
     href: "/",
     "aria-label": Astro.url.pathname === "/" ? "page" : undefined,
   },
@@ -23,7 +23,7 @@ paths.forEach((label: string, i: number) => {
 });
 ---
 
-<nav aria-label="Breadcrumb" class={className}>
+<nav aria-label="현재 위치" class={className}>
   <ol class="inline-flex" role="list">
     {
       parts.map(({ label, ...attrs }, index) => (

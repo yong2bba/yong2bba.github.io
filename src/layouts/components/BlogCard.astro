@@ -13,7 +13,7 @@ const { data } = Astro.props;
 const { title, image, date, author, categories } = data.data;
 ---
 
-<div class="bg-body dark:bg-darkmode-body">
+<article class="bg-body dark:bg-darkmode-body">
   {
     image && (
       <ImageMod
@@ -49,10 +49,18 @@ const { title, image, date, author, categories } = data.data;
         ))
       }
     </li>
-    {date && <li class="inline-block">{dateFormat(date)}</li>}
+    {
+      date && (
+        <li class="inline-block">
+          <time datetime={new Date(date).toISOString()}>
+            {dateFormat(date)}
+          </time>
+        </li>
+      )
+    }
   </ul>
   <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}</p>
   <a class="btn btn-outline-primary btn-sm" href={`/${blog_folder}/${data.id}`}>
-    read more
+    더 읽기
   </a>
-</div>
+</article>

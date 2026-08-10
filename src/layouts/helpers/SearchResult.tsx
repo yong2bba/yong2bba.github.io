@@ -37,6 +37,9 @@ const SearchResult = ({
   searchResult: ISearchItem[];
   searchString: string;
 }) => {
+  const escapeRegExp = (value: string) =>
+    value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
   // generate search result group
   const generateSearchGroup = (searchResult: ISearchItem[]) => {
     const joinDataByGroup: ISearchGroup[] = searchResult.reduce(
@@ -73,7 +76,7 @@ const SearchResult = ({
 
   // match marker
   const matchMarker = (text: string, substring: string) => {
-    const parts = text.split(new RegExp(`(${substring})`, "gi"));
+    const parts = text.split(new RegExp(`(${escapeRegExp(substring)})`, "gi"));
     return parts.map((part, index) =>
       part.toLowerCase() === substring.toLowerCase() ? (
         <mark key={index}>{part}</mark>
@@ -85,7 +88,7 @@ const SearchResult = ({
 
   // match underline
   const matchUnderline = (text: string, substring: string) => {
-    const parts = text?.split(new RegExp(`(${substring})`, "gi"));
+    const parts = text?.split(new RegExp(`(${escapeRegExp(substring)})`, "gi"));
     return parts?.map((part, index) =>
       part.toLowerCase() === substring.toLowerCase() ? (
         <span key={index} className="underline">
@@ -134,7 +137,7 @@ const SearchResult = ({
             finalResult.map((result) => (
               <div className="search-result-group" key={result.group}>
                 <p className="search-result-group-title">
-                  {titleify(result.group)}
+                  {result.group === "blog" ? "글" : titleify(result.group)}
                 </p>
 
                 {result.groupItems.map((item) => (
@@ -245,13 +248,14 @@ const SearchResult = ({
                 ></path>
               </svg>
               <p className="mt-4">
-                No results for &quot;<strong>{searchString}</strong>&quot;
+                &quot;<strong>{searchString}</strong>&quot; 검색 결과가
+                없습니다.
               </p>
             </div>
           )}
         </div>
       ) : (
-        <div className="py-8 text-center">Type something to search...</div>
+        <div className="py-8 text-center">검색어를 입력하세요.</div>
       )}
     </div>
   );

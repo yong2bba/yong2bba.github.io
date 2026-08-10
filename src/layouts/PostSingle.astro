@@ -58,7 +58,9 @@ const { title, description, author, categories, image, date, tags } = post.data;
           </li>
           <li class="mr-4 inline-block">
             <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-            {dateFormat(date)}
+            <time datetime={new Date(date).toISOString()}
+              >{dateFormat(date)}</time
+            >
           </li>
         </ul>
         <div class="content mb-10">
@@ -66,7 +68,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
         </div>
         <div class="row items-start justify-between">
           <div class="mb-10 flex items-center lg:col-5 lg:mb-0">
-            <h5 class="mr-3">Tags :</h5>
+            <h5 class="mr-3">태그 :</h5>
             <ul>
               {
                 tags.map((tag: string) => (
@@ -83,12 +85,12 @@ const { title, description, author, categories, image, date, tags } = post.data;
             </ul>
           </div>
           <div class="flex items-center lg:col-4">
-            <h5 class="mr-3">Share :</h5>
+            <h5 class="mr-3">공유 :</h5>
             <Share
               className="social-icons"
               title={title}
               description={description}
-              slug={post.id}
+              slug={`/blog/${post.id}`}
             />
           </div>
         </div>
@@ -96,18 +98,19 @@ const { title, description, author, categories, image, date, tags } = post.data;
       </article>
     </div>
 
-    <!-- Related posts -->
-    <div class="section pb-0">
-      <h2 class="h3 mb-12 text-center">Related Posts</h2>
-      <div class="row justify-center">
-        {
-          similarPosts.map((post) => (
-            <div class="lg:col-4 md:col-6 mb-14">
-              <BlogCard data={post} />
-            </div>
-          ))
-        }
-      </div>
-    </div>
+    {
+      similarPosts.length > 0 && (
+        <div class="section pb-0">
+          <h2 class="h3 mb-12 text-center">관련 글</h2>
+          <div class="row justify-center">
+            {similarPosts.map((post) => (
+              <div class="lg:col-4 md:col-6 mb-14">
+                <BlogCard data={post} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
   </div>
 </section>

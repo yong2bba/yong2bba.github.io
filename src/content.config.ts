@@ -49,25 +49,9 @@ const authorsCollection = defineCollection({
   }),
 });
 
-// Pages collection schema
-const pagesCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pages" }),
-  schema: z.object({
-    ...commonFields,
-  }),
-});
-
 // about collection schema
 const aboutCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/about" }),
-  schema: z.object({
-    ...commonFields,
-  }),
-});
-
-// contact collection schema
-const contactCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/contact" }),
   schema: z.object({
     ...commonFields,
   }),
@@ -149,9 +133,7 @@ export const collections = {
   homepage: homepageCollection,
   blog: blogCollection,
   authors: authorsCollection,
-  pages: pagesCollection,
   about: aboutCollection,
-  contact: contactCollection,
 
   // sections
   ctaSection: ctaSectionCollection,

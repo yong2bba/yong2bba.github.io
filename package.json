@@ -1,8 +1,8 @@
 {
-  "name": "astroplate",
+  "name": "yongjin-blog",
   "version": "6.2.1",
-  "description": "Astro and Tailwindcss boilerplate",
-  "author": "zeon.studio",
+  "description": "Yongjin personal blog",
+  "author": "Yongjin",
   "license": "MIT",
   "packageManager": "pnpm@11.17.0",
   "type": "module",
@@ -11,6 +11,7 @@
     "build": "node scripts/themeGenerator.js && node scripts/jsonGenerator.js && astro build && node scripts/llmsGenerator.js",
     "preview": "astro preview",
     "check": "astro check",
+    "verify:build": "node scripts/verify-build.mjs",
     "format": "prettier -w ./src",
     "generate-json": "node scripts/jsonGenerator.js",
     "generate-llms": "node scripts/llmsGenerator.js",
@@ -23,8 +24,8 @@
     "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/mdx": "7.0.4",
     "@astrojs/react": "6.0.1",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "3.7.3",
-    "@digi4care/astro-google-tagmanager": "^2.0.0",
     "@justinribeiro/lite-youtube": "^1.9.0",
     "astro": "7.1.4",
     "astro-auto-import": "^0.5.2",
@@ -63,8 +64,7 @@
     "typescript": "^6.0.3",
     "wrangler": "^4.114.0"
   },
-  "overrides": {
-    "typescript": "$typescript",
-    "astro": "$astro"
+  "engines": {
+    "node": ">=22"
   }
 }
