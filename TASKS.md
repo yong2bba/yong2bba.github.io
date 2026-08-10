@@ -2,11 +2,11 @@
 
 ## Now
 
-- [ ] PR·CI·Pages 배포
+- [ ] 실제 이전 글과 최종 블로그명 입력 대기
 
 ## Next
 
-- [ ] 실제 Pages 주소 회귀검증
+- [ ] 실제 글 이전 PR 작성
 
 ## Later
 
@@ -23,3 +23,6 @@
 - [x] 로컬 build/check와 정적 산출물 검사
 - [x] 데스크톱·390px 모바일·검색·리디렉션 브라우저 QA
 - [x] 생산 의존성 감사와 peer dependency 검사
+- [x] PR #1·#2 CI 통과 및 main 병합
+- [x] GitHub Pages HTTPS 배포와 공개 주소 회귀검증
+- [x] Workboard `t_5a6823fc`에 담당·증거·결정·차단요인 기록
