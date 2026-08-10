@@ -43,6 +43,8 @@ jobs:
         run: pnpm check
       - name: Verify static output
         run: pnpm verify:build
+      - name: Verify migrated content and assets
+        run: pnpm verify:migration
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
