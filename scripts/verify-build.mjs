@@ -23,6 +23,7 @@ const checks = [
   [home.includes('type="application/rss+xml"'), "RSS auto-discovery"],
   [home.includes('type="application/ld+json"'), "home JSON-LD"],
   [home.includes('toolname="searchPosts"'), "Declarative WebMCP form"],
+  [home.includes("2026년 8월 10일"), "Korean date remains stable in UTC CI"],
   [post.includes('id="목차"') || post.includes('id="toc"'), "post TOC heading"],
   [post.includes("<details>"), "post collapsible TOC"],
   [
