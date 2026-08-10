@@ -11,7 +11,6 @@ import sharp from "sharp";
 import config from "./src/config/config.json";
 import theme from "./src/config/theme.json";
 
-
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
   const [name, weightPart] = fontStr.split(":");
@@ -77,8 +76,11 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [
-        remarkToc,
-        [remarkCollapse, { test: "Table of contents" }],
+        [remarkToc, { heading: "목차|table[ -]of[ -]contents?|toc" }],
+        [
+          remarkCollapse,
+          { test: "목차|Table of contents", summary: "목차 열기" },
+        ],
       ],
     }),
     shikiConfig: { theme: "one-dark-pro", wrap: true },

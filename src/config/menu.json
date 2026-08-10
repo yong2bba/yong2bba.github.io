@@ -1,57 +1,30 @@
 {
   "main": [
     {
-      "name": "Home",
+      "name": "홈",
       "url": "/"
     },
     {
-      "name": "About",
+      "name": "소개",
       "url": "/about"
     },
     {
-      "name": "Elements",
-      "url": "/elements"
-    },
-    {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "Contact",
-          "url": "/contact"
-        },
-        {
-          "name": "Blog",
-          "url": "/blog"
-        },
-        {
-          "name": "Authors",
-          "url": "/authors"
-        },
-        {
-          "name": "Categories",
-          "url": "/categories"
-        },
-        {
-          "name": "Tags",
-          "url": "/tags"
-        },
-        {
-          "name": "404 Page",
-          "url": "/404"
-        }
-      ]
+      "name": "RSS",
+      "url": "/rss.xml"
     }
   ],
   "footer": [
     {
-      "name": "Elements",
-      "url": "/elements"
+      "name": "소개",
+      "url": "/about"
     },
     {
-      "name": "Privacy Policy",
-      "url": "/privacy-policy"
+      "name": "RSS",
+      "url": "/rss.xml"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/yong2bba/yong2bba.github.io"
     }
   ]
 }

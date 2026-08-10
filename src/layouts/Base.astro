@@ -6,21 +6,16 @@ import { plainify } from "@/lib/utils/textConverter";
 import Footer from "@/partials/Footer.astro";
 import Header from "@/partials/Header.astro";
 import "@/styles/main.css";
-import {
-  GoogleTagmanager,
-  GoogleTagmanagerNoscript,
-} from "@digi4care/astro-google-tagmanager";
+
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import Announcement from "./helpers/Announcement";
 import SearchModal from "./helpers/SearchModal";
 
-// font families - extract font names for Font component (filter out type keys)
 const fontEntries = Object.entries(theme.fonts.font_family).filter(
   ([key]) => !key.includes("_type"),
 );
 
-// types for frontmatters
 export interface Props {
   title?: string;
   meta_title?: string;
@@ -28,26 +23,44 @@ export interface Props {
   image?: string;
   noindex?: boolean;
   canonical?: string;
+  ogType?: "website" | "article";
+  jsonLd?: Record<string, unknown>;
 }
 
-// destructure frontmatter
-const { title, meta_title, description, image, noindex, canonical } =
-  Astro.props;
+const {
+  title,
+  meta_title,
+  description,
+  image,
+  noindex,
+  canonical,
+  ogType = "website",
+  jsonLd,
+} = Astro.props;
+const pageTitle = plainify(meta_title || title || config.site.title);
+const pageDescription = plainify(
+  description || config.metadata.meta_description,
+);
+const canonicalUrl =
+  canonical || new URL(Astro.url.pathname, config.site.base_url).toString();
+const socialImage = new URL(
+  image || config.metadata.meta_image,
+  config.site.base_url,
+).toString();
+const safeJsonLd = jsonLd ? JSON.stringify(jsonLd).replace(/</g, "\u003c") : "";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <!-- google tag manager -->
-    {
-      config.google_tag_manager.enable && (
-        <GoogleTagmanager id={config.google_tag_manager.gtm_id} />
-      )
-    }
-    <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
-    <!-- theme meta -->
-    <meta name="theme-name" content="astroplate" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${config.site.title} RSS`}
+      href={new URL("/rss.xml", config.site.base_url).toString()}
+    />
+    <meta name="theme-name" content="yongjin-blog" />
     <meta name="msapplication-TileColor" content="#000000" />
     <meta
       name="theme-color"
@@ -60,113 +73,44 @@ const { title, meta_title, description, image, noindex, canonical } =
       content="#000"
     />
     <meta name="generator" content={Astro.generator} />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <!-- google font css - Astro 6 built-in Font API -->
+    <meta charset="UTF-8" />
     {
       fontEntries.map(([key]) => {
         const cssVar = `--font-${key}` as any;
         return <Font cssVariable={cssVar} preload />;
       })
     }
-
-    <!-- responsive meta -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=5"
     />
-
-    <!-- title -->
-    <title>
-      {plainify(meta_title ? meta_title : title ? title : config.site.title)}
-    </title>
-
-    <!-- canonical url -->
-    {canonical && <link rel="canonical" href={canonical} item-prop="url" />}
-
-    <!-- noindex robots -->
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
-
-    <!-- meta-description -->
-    <meta
-      name="description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
-    />
-
-    <ClientRouter />
-
-    <!-- author from config.json -->
+    <meta name="description" content={pageDescription} />
     <meta name="author" content={config.metadata.meta_author} />
-
-    <!-- og-title -->
-    <meta
-      property="og:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title,
-      )}
-    />
-
-    <!-- og-description -->
-    <meta
-      property="og:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
-    />
-
-    <!-- twitter-title -->
-    <meta
-      name="twitter:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title,
-      )}
-    />
-
-    <!-- twitter-description -->
-    <meta
-      name="twitter:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
-    />
-
-    <!-- og-image -->
-    <meta
-      property="og:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
-    />
-
-    <!-- twitter-image -->
-    <meta
-      name="twitter:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
-    />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={socialImage} />
     <meta name="twitter:card" content="summary_large_image" />
-  </head>
-  <body class="flex flex-col min-h-screen">
-    {/* google tag manager noscript */}
     {
-      config.google_tag_manager.enable && (
-        <GoogleTagmanagerNoscript id={config.google_tag_manager.gtm_id} />
+      jsonLd && (
+        <script is:inline type="application/ld+json" set:html={safeJsonLd} />
       )
     }
+    <ClientRouter />
+  </head>
+  <body class="flex flex-col min-h-screen">
     <Announcement client:only="react" />
     <Header />
-    <SearchModal client:only="react" />
-    <main class="grow" id="main-content">
-      <slot />
-    </main>
+    <SearchModal client:load />
+    <main class="grow" id="main-content"><slot /></main>
     <Footer />
     <TwSizeIndicator />
   </body>

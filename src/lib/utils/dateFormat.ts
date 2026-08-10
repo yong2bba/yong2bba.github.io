@@ -1,12 +1,9 @@
-import { format } from "date-fns";
-
-const dateFormat = (
-  date: Date | string,
-  pattern: string = "dd MMM, yyyy",
-): string => {
-  const dateObj = new Date(date);
-  const output = format(dateObj, pattern);
-  return output;
+const dateFormat = (date: Date | string): string => {
+  return new Intl.DateTimeFormat("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date(date));
 };
 
 export default dateFormat;
