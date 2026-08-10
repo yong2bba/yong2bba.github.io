@@ -10,3 +10,5 @@
 - 취약 의존성 4건을 패치 버전으로 고정하고 사용하지 않는 Astro 6 전용 GTM 패키지를 제거했다.
 - build/check/정적 검증/peer/audit와 데스크톱·모바일 브라우저 QA를 통과했다.
 - 공개 검증에서 CI의 UTC 시간대로 날짜가 하루 당겨지는 문제를 발견해 `Asia/Seoul` 표시 시간대를 고정했다.
+- PR #1·#2를 병합하고 GitHub Pages Actions 배포 및 공개 모바일 회귀검증을 완료했다.
+- Workboard `t_5a6823fc`에 Alpha(default) 담당, 검증 증거, accepted 결정, blockers 없음으로 완료 기록했다.

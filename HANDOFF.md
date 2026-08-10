@@ -1,9 +1,9 @@
 ---
-status: publishing
+status: complete
 updated: 2026-08-10
-summary: "한국어 블로그 구현과 로컬 검증 완료, GitHub Pages 배포 전"
-current_focus: "PR·CI·Pages 배포"
-next_step: "커밋·push·PR·CI 후 main 병합 및 공개 URL 검증"
+summary: "한국어 블로그 구현·검증·GitHub Pages 공개 완료"
+current_focus: "실제 글 이전과 최종 브랜딩 결정 대기"
+next_step: "사용자가 제공한 실제 글을 Markdown으로 이전"
 blockers: []
 ---
 
@@ -18,12 +18,13 @@ blockers: []
 
 ## Current State
 
-- `feat/launch-blog`에 로컬 변경이 준비돼 있다.
+- `main`에 PR #1과 날짜 교정 PR #2가 병합됐다.
+- `https://yong2bba.github.io/`에 공개됐다.
 - 합의한 `/blog`의 높이·여백·목록 구조는 유지됐다.
 
 ## Next Safe Action
 
-변경을 커밋하고 PR CI를 통과시킨 뒤 main에 병합한다.
+실제 이전 글을 제공받아 별도 콘텐츠 PR로 추가한다.
 
 ## Needs User Decision
 
@@ -39,5 +40,7 @@ blockers: []
 - `pnpm audit --prod`: No known vulnerabilities found
 - `pnpm build`: 11 pages built
 - `pnpm check`: 0 errors, 0 warnings, 0 hints
-- `pnpm verify:build`: 14/14 PASS
+- `pnpm verify:build`: 15/15 PASS
 - 브라우저: 데스크톱·390×844 모바일 overflow 없음, 검색·특수문자·TOC·공유 URL·`/blog` 정규화 확인
+- 공개 Pages: HTTPS, `lang=ko`, canonical, 2026년 8월 10일 날짜, WebMCP, RSS/llms/sitemap, 모바일 overflow 모두 확인
+- Workboard: `t_5a6823fc` — Alpha(default), accepted, blockers 없음
