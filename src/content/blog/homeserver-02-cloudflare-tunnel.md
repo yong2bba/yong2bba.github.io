@@ -17,7 +17,7 @@ draft: false
 
 ![돈 아끼려고 n8n 셀프호스팅 했다가 홈 서버 만든 이야기 (2) Cloudflare tunnel](/assets/ghost/homeserver-02-cloudflare-tunnel/01-feature-1.webp)
 
-안녕하세요. 서비스기획자 용진입니다. [돈 아끼려고 n8n 셀프호스팅 했다가 홈 서버 만든 이야기 (1)](https://yongjins.dev/story-homeserver-01/?ref=yongjin.dev)에서 이어지는 내용이니 이전 내용도 한번 읽어봐주시면 좋겠네요.
+안녕하세요. 서비스기획자 용진입니다. [돈 아끼려고 n8n 셀프호스팅 했다가 홈 서버 만든 이야기 (1)](/blog/homeserver-01-n8n-traefik)에서 이어지는 내용이니 이전 내용도 한번 읽어봐주시면 좋겠네요.
 
 ## 왜 나는 SSL/TLS 인증을 받지 못했는가
 

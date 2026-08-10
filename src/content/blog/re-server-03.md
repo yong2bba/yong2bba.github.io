@@ -104,7 +104,7 @@ print(message.content)
 
 ## 다시 서버 이야기로 돌아와서...
 
-sequential-thinking MCP는 제 질문을 스스로 잘 쪼개서 분석하고 적절한 답을 주었습니다. 여기서 만들어준 docker-compose.yml 과 dynamic.yml은 [Re:Server output](https://www.yongjin.dev/re-server-output/)에 정리해두겠습니다. Claude의 설명을 보면서 시키는대로 하는 중에 다음과 같은 내용을 보게 됩니다.
+sequential-thinking MCP는 제 질문을 스스로 잘 쪼개서 분석하고 적절한 답을 주었습니다. 여기서 만들어준 docker-compose.yml 과 dynamic.yml은 [Re:Server output](/blog/re-server-output)에 정리해두겠습니다. Claude의 설명을 보면서 시키는대로 하는 중에 다음과 같은 내용을 보게 됩니다.
 
 ![Re:Server - 03. 서버보다 MCP 이야기가 더 많은 서버 재설치 마지막 이야기](/assets/ghost/re-server-03/06-05.webp)
 
