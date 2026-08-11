@@ -2,6 +2,7 @@
 dist/
 .output/
 .json/
+public/_optimized/
 
 # dependencies
 node_modules/

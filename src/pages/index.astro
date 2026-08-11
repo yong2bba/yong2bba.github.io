@@ -45,9 +45,9 @@ const jsonLd = {
         <div class="lg:col-8">
           <div class="row">
             {
-              currentPosts.map((post) => (
+              currentPosts.map((post, index) => (
                 <div class="mb-14 md:col-6">
-                  <BlogCard data={post} />
+                  <BlogCard data={post} priority={index === 0} />
                 </div>
               ))
             }

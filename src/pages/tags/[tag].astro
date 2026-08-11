@@ -33,9 +33,9 @@ const sortedPosts = sortByDate(filterByTags);
     <div class="container">
       <div class="row">
         {
-          sortedPosts.map((post) => (
+          sortedPosts.map((post, index) => (
             <div class="mb-14 md:col-6 lg:col-4">
-              <BlogCard data={post} />
+              <BlogCard data={post} priority={index === 0} />
             </div>
           ))
         }

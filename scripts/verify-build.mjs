@@ -6,6 +6,8 @@ const required = [
   "dist/rss.xml",
   "dist/sitemap-index.xml",
   "dist/llms.txt",
+  "dist/_optimized/assets/ghost/docker-install/01-freepik__-yongjin-__75455-480.avif",
+  "dist/_optimized/assets/ghost/docker-install/01-freepik__-yongjin-__75455-480.webp",
 ];
 
 for (const file of required) await access(file);
@@ -17,7 +19,27 @@ const homeServerPost = await readFile(
   "dist/blog/homeserver-03-nowadays/index.html",
   "utf8",
 );
+const dockerPost = await readFile(
+  "dist/blog/docker-install/index.html",
+  "utf8",
+);
 const rss = await readFile("dist/rss.xml", "utf8");
+const responsiveManifest = JSON.parse(
+  await readFile(".json/responsive-images.json", "utf8"),
+);
+const responsiveEntries = Object.values(responsiveManifest);
+const generatedVariantCount = responsiveEntries.reduce(
+  (count, entry) =>
+    count + entry.sources.avif.length + entry.sources.webp.length,
+  0,
+);
+const generatedVariants = responsiveEntries.flatMap((entry) => [
+  ...entry.sources.avif,
+  ...entry.sources.webp,
+]);
+for (const variant of generatedVariants) await access(`dist${variant.src}`);
+const highPriorityImageCount = (home.match(/fetchpriority="high"/g) || [])
+  .length;
 const fontPreloadCount = (home.match(/rel="preload"[^>]+as="font"/g) || [])
   .length;
 
@@ -59,6 +81,30 @@ const checks = [
     "legacy fonts are removed",
   ],
   [fontPreloadCount === 1, "only the above-fold logo font is preloaded"],
+  [responsiveEntries.length === 12, "all 12 post cover images have a manifest"],
+  [generatedVariantCount === 72, "all 72 responsive image variants exist"],
+  [
+    home.includes('type="image/avif"') &&
+      home.includes('type="image/webp"') &&
+      home.includes(" 480w") &&
+      home.includes(" 768w") &&
+      home.includes(" 1200w"),
+    "home cards expose AVIF/WebP responsive sources",
+  ],
+  [highPriorityImageCount === 1, "only the first home card has high priority"],
+  [home.includes('loading="lazy"'), "below-fold home cards load lazily"],
+  [
+    !home.includes(
+      'src="/assets/ghost/docker-install/01-freepik__-yongjin-__75455.png"',
+    ),
+    "home does not load the original 5.55 MB cover PNG",
+  ],
+  [
+    dockerPost.includes(
+      'src="/_optimized/assets/ghost/docker-install/01-freepik__-yongjin-__75455-1200.webp"',
+    ) && dockerPost.includes('fetchpriority="high"'),
+    "single post hero uses the optimized high-priority image",
+  ],
   [home.includes('class="mb-6 break-words"'), "card summaries wrap on mobile"],
   [
     !relatedPost.includes("![돈 아끼려고"),
