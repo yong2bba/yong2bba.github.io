@@ -2,7 +2,6 @@
 
 ## Now
 
-- [ ] P1 모바일 메뉴·검색 dialog PR·CI·Pages·공개 회귀검증
 
 ## Next
 
@@ -12,6 +11,7 @@
 
 ## Done
 
+- [x] P1 PR #13 CI·squash 병합, Pages run `31463708525`, 공개 키보드·시각 회귀검증
 - [x] 모바일 메뉴를 44×44px native button과 `aria-expanded/controls`·Escape 복귀로 교체
 - [x] 검색 dialog에 닫기 버튼·focus trap·초기/복귀 포커스 적용
 - [x] P1 RED→GREEN 정적 계약·실제 Tab/Shift+Tab/Escape/Ctrl+K·시각 QA·AccessLint baseline 비교

@@ -1,9 +1,9 @@
 ---
-status: in-progress
+status: complete
 updated: 2026-08-11
-summary: "P1 모바일 메뉴·검색 dialog 키보드 접근성 구현과 로컬 검증 완료"
-current_focus: "P1 접근성 PR·Pages"
-next_step: "PR·CI·Pages·공개 키보드 회귀검증"
+summary: "P1 모바일 메뉴·검색 dialog 키보드 접근성·독립 QA·PR·Pages·공개 회귀검증 완료"
+current_focus: "P1 접근성 완료"
+next_step: "후속 블로그 개선 범위 선택"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-P1 접근성 후보의 PR·CI·Pages·공개 키보드 회귀를 검증한다.
+후속 블로그 개선 범위를 선택한다.
 
 ## Needs User Decision
 
@@ -49,6 +49,10 @@ P1 접근성 후보의 PR·CI·Pages·공개 키보드 회귀를 검증한다.
 - 검색 dialog 초기 포커스, Tab·Shift+Tab 순환, Escape·Ctrl+K trigger 복귀 PASS
 - 독립 QA 1차 FAIL 2건(Shift+Tab의 숨은 submit, Cmd/Ctrl+K 비토글)을 수정하고 정확 재현 PASS
 - v2 독립 산출물 재검증 exact PASS: 병합 차단 결함 0, 숨은 submit 0, Enter·Space·정/역 trap·shortcut toggle PASS
+- PR #13 `Build and verify` PASS, squash 병합 완료
+- main Pages run `31463708525` build 2m24s·deploy 9s PASS
+- 공개 390×844: 메뉴 44×44·ARIA·Escape 복귀, 검색 정/역 trap·Escape·두 번째 Ctrl+K 닫기·trigger 복귀 PASS
+- 공개 시각 QA PASS, overflow 0, console error/warning 0
 - P1 로컬 390×844 시각 QA PASS, overflow 0, 콘솔 error/warning 0
 - AccessLint: 공개 baseline과 동일한 기존 소개 페이지 `h1` 1건, P1 신규 위반 0
 - PR #11 독립 QA exact PASS, 병합 차단 결함 0
