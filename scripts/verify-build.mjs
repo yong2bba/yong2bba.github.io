@@ -47,6 +47,14 @@ const searchBundles = await glob("dist/_astro/SearchModal.*.js");
 const searchBundle = (
   await Promise.all(searchBundles.map((file) => readFile(file, "utf8")))
 ).join("\n");
+const headerSource = await readFile(
+  "src/layouts/partials/Header.astro",
+  "utf8",
+);
+const searchModalSource = await readFile(
+  "src/layouts/helpers/SearchModal.tsx",
+  "utf8",
+);
 
 const checks = [
   [home.includes('<html lang="ko">'), "home has lang=ko"],
@@ -112,6 +120,28 @@ const checks = [
       searchBundle.includes("-480.webp") &&
       /loading:[`"']lazy[`"']/.test(searchBundle),
     "search results use lazy AVIF/WebP cover thumbnails",
+  ],
+  [
+    headerSource.includes('id="nav-toggle"') &&
+      headerSource.includes('type="button"') &&
+      headerSource.includes('aria-controls="nav-menu"') &&
+      headerSource.includes('aria-expanded="false"') &&
+      headerSource.includes("min-h-[44px]") &&
+      headerSource.includes("min-w-[44px]") &&
+      !headerSource.includes('type="checkbox" class="hidden"'),
+    "mobile navigation uses a 44px native disclosure button",
+  ],
+  [
+    searchModalSource.includes('event.key === "Tab"') &&
+      searchModalSource.includes("event.shiftKey") &&
+      searchModalSource.includes("focusableElements") &&
+      searchModalSource.includes("previouslyFocusedElement?.focus()") &&
+      searchModalSource.includes("[data-search-close]") &&
+      searchModalSource.includes("isOpen ? closeSearch() : openSearch()") &&
+      !searchModalSource.includes(
+        '<button type="submit" className="sr-only">',
+      ),
+    "search dialog traps visible focus and restores keyboard focus",
   ],
   [
     dockerPost.includes(

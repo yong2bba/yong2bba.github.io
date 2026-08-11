@@ -1,9 +1,9 @@
 ---
-status: complete
+status: in-progress
 updated: 2026-08-11
-summary: "검색 결과 썸네일 P0 최적화·PR #11 병합·Pages·공개 회귀검증 완료"
-current_focus: "P0 검색 썸네일 최적화 완료"
-next_step: "후속 블로그 개선 범위 선택"
+summary: "P1 모바일 메뉴·검색 dialog 키보드 접근성 구현과 로컬 검증 완료"
+current_focus: "P1 접근성 PR·Pages"
+next_step: "PR·CI·Pages·공개 키보드 회귀검증"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-후속 블로그 개선 범위를 선택한다.
+P1 접근성 후보의 PR·CI·Pages·공개 키보드 회귀를 검증한다.
 
 ## Needs User Decision
 
@@ -45,6 +45,12 @@ blockers: []
 
 ## Verification
 
+- 모바일 Tab으로 native 메뉴 버튼 도달, 실제 44×44px, `aria-expanded` 동기화, Escape 닫기·포커스 복귀 PASS
+- 검색 dialog 초기 포커스, Tab·Shift+Tab 순환, Escape·Ctrl+K trigger 복귀 PASS
+- 독립 QA 1차 FAIL 2건(Shift+Tab의 숨은 submit, Cmd/Ctrl+K 비토글)을 수정하고 정확 재현 PASS
+- v2 독립 산출물 재검증 exact PASS: 병합 차단 결함 0, 숨은 submit 0, Enter·Space·정/역 trap·shortcut toggle PASS
+- P1 로컬 390×844 시각 QA PASS, overflow 0, 콘솔 error/warning 0
+- AccessLint: 공개 baseline과 동일한 기존 소개 페이지 `h1` 1건, P1 신규 위반 0
 - PR #11 독립 QA exact PASS, 병합 차단 결함 0
 - PR #11 `Build and verify` PASS, squash 병합 완료
 - main Pages run `31460640868` build·deploy PASS

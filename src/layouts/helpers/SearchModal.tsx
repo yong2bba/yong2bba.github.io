@@ -61,37 +61,82 @@ const SearchModal = () => {
       "searchInput",
     ) as HTMLInputElement | null;
     const searchModalOverlay = document.getElementById("searchModalOverlay");
+    const searchModalClose = searchModal?.querySelector("[data-search-close]");
     const searchModalTriggers = document.querySelectorAll(
       "[data-search-trigger]",
     );
     let previouslyFocusedElement: HTMLElement | null = null;
 
     const openSearch = () => {
+      if (searchModal?.getAttribute("aria-hidden") === "false") {
+        searchInput?.focus();
+        return;
+      }
       previouslyFocusedElement = document.activeElement as HTMLElement | null;
       searchModal?.removeAttribute("inert");
       searchModal?.classList.add("show");
       searchModal?.setAttribute("aria-hidden", "false");
+      searchModalTriggers.forEach((trigger) =>
+        trigger.setAttribute("aria-expanded", "true"),
+      );
       searchInput?.focus();
     };
     const closeSearch = () => {
+      if (searchModal?.getAttribute("aria-hidden") !== "false") return;
       searchInput?.blur();
       searchModal?.classList.remove("show");
       searchModal?.setAttribute("aria-hidden", "true");
       searchModal?.setAttribute("inert", "");
+      searchModalTriggers.forEach((trigger) =>
+        trigger.setAttribute("aria-expanded", "false"),
+      );
       previouslyFocusedElement?.focus();
+      previouslyFocusedElement = null;
     };
 
     searchModalTriggers.forEach((button) =>
       button.addEventListener("click", openSearch),
     );
     searchModalOverlay?.addEventListener("click", closeSearch);
+    searchModalClose?.addEventListener("click", closeSearch);
 
     const handleKeydown = (event: KeyboardEvent) => {
+      const isOpen = searchModal?.getAttribute("aria-hidden") === "false";
       if ((event.metaKey || event.ctrlKey) && event.key === "k") {
         event.preventDefault();
-        openSearch();
+        isOpen ? closeSearch() : openSearch();
+        return;
       }
-      if (event.key === "Escape") closeSearch();
+      if (event.key === "Escape" && isOpen) {
+        event.preventDefault();
+        closeSearch();
+      }
+      if (event.key === "Tab" && isOpen && searchModal) {
+        const focusableElements = Array.from(
+          searchModal.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter((element) => element.getClientRects().length > 0);
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements.at(-1);
+        if (!firstElement || !lastElement) return;
+
+        if (
+          event.shiftKey &&
+          (document.activeElement === firstElement ||
+            !searchModal.contains(document.activeElement))
+        ) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (
+          !event.shiftKey &&
+          (document.activeElement === lastElement ||
+            !searchModal.contains(document.activeElement))
+        ) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
     };
     document.addEventListener("keydown", handleKeydown);
 
@@ -100,6 +145,7 @@ const SearchModal = () => {
         button.removeEventListener("click", openSearch),
       );
       searchModalOverlay?.removeEventListener("click", closeSearch);
+      searchModalClose?.removeEventListener("click", closeSearch);
       document.removeEventListener("keydown", handleKeydown);
     };
   }, []);
@@ -114,7 +160,11 @@ const SearchModal = () => {
       aria-hidden="true"
       inert
     >
-      <div id="searchModalOverlay" className="search-modal-overlay" />
+      <div
+        id="searchModalOverlay"
+        className="search-modal-overlay"
+        aria-hidden="true"
+      />
       <form
         className="search-wrapper"
         role="search"
@@ -136,8 +186,13 @@ const SearchModal = () => {
             autoComplete="off"
             {...webMcpParamAttributes}
           />
-          <button type="submit" className="sr-only">
-            검색
+          <button
+            type="button"
+            className="search-wrapper-close"
+            aria-label="검색 닫기"
+            data-search-close
+          >
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <SearchResult searchResult={searchResult} searchString={searchString} />

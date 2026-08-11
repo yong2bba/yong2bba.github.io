@@ -2,6 +2,7 @@
 
 ## Now
 
+- [ ] P1 모바일 메뉴·검색 dialog PR·CI·Pages·공개 회귀검증
 
 ## Next
 
@@ -11,6 +12,10 @@
 
 ## Done
 
+- [x] 모바일 메뉴를 44×44px native button과 `aria-expanded/controls`·Escape 복귀로 교체
+- [x] 검색 dialog에 닫기 버튼·focus trap·초기/복귀 포커스 적용
+- [x] P1 RED→GREEN 정적 계약·실제 Tab/Shift+Tab/Escape/Ctrl+K·시각 QA·AccessLint baseline 비교
+- [x] P1 v2 독립 QA exact PASS, 1차 차단 결함 2건 해소
 - [x] 검색 썸네일 P0 독립 QA·PR #11 CI·squash 병합
 - [x] Pages run `31460640868` build/deploy와 공개 콜드 검색 77,647B 회귀검증
 - [x] 검색 결과 원본 이미지를 기존 480px AVIF/WebP manifest에 연결
