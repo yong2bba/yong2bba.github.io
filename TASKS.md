@@ -2,7 +2,7 @@
 
 ## Now
 
-- [ ] Google Fonts 기반 블로그 타이포그래피 변경 PR 생성·CI 검증
+- [ ] PR #9 시각 검토와 병합 여부 결정
 
 ## Next
 
@@ -13,6 +13,7 @@
 ## Done
 
 - [x] Noto Sans KR·Space Grotesk·Nanum Gothic Coding 적용과 로컬 build/check/브라우저 검증
+- [x] 폰트 변경 PR #9 생성과 `Build and verify` CI 통과
 - [x] Astroplate 템플릿으로 저장소 생성
 - [x] 프로젝트 세이브포인트 문서 생성
 - [x] 프로젝트 설정과 콘텐츠를 한국어 개인 블로그로 변경

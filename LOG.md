@@ -6,6 +6,7 @@
 - Astro Google provider의 `korean`·`latin` subset을 명시하고 Heebo·Signika 참조를 제거했다.
 - `pnpm check`, `pnpm build`, `verify:build`, `verify:migration`을 통과했다.
 - Chrome 1440×1000·390×844에서 가로 overflow 0, broken image 0, 실제 코드 3개에 Nanum Gothic Coding 적용을 확인했다.
+- PR #9를 생성했고 `Build and verify`가 42초에 PASS했다. PR deploy job은 의도대로 skip됐다.
 
 ## 2026-08-10
 

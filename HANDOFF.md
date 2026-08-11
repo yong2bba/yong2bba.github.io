@@ -1,9 +1,9 @@
 ---
-status: in_progress
+status: review
 updated: 2026-08-11
 summary: "Google Fonts 기반 Noto Sans KR·Space Grotesk·Nanum Gothic Coding 적용 및 로컬 검증 완료"
-current_focus: "폰트 변경 PR 생성과 CI 검증"
-next_step: "브랜치 커밋·PR 생성 후 CI 결과 확인"
+current_focus: "폰트 변경 PR #9 사용자 검토"
+next_step: "사용자 승인 시 PR #9 병합 후 Pages·Kitesurf 회귀검증"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-`feat/google-font-typography`를 커밋·푸시하고 PR CI를 확인한다. 병합·배포는 별도 승인 전 수행하지 않는다.
+PR #9의 시각 결과를 검토한다. 사용자 승인 시 병합하고 Pages 배포와 Kitesurf 한글 렌더링을 회귀검증한다.
 
 ## Needs User Decision
 
@@ -45,6 +45,8 @@ blockers: []
 
 ## Verification
 
+- PR #9 `Build and verify`: PASS (42초), deploy는 PR에서 의도대로 skip
+- Chrome computed style: Noto Sans KR·Space Grotesk·Nanum Gothic Coding 로딩 true, 데스크톱·390px overflow 0, broken image 0
 - `pnpm build`: 32 pages built
 - `pnpm check`: 0 errors, 0 warnings, 0 hints
 - `pnpm verify:build`: 15/15 PASS
