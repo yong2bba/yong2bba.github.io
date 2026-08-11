@@ -1,4 +1,5 @@
 import { readFile, access } from "node:fs/promises";
+import { glob } from "glob";
 
 const required = [
   "dist/index.html",
@@ -42,6 +43,10 @@ const highPriorityImageCount = (home.match(/fetchpriority="high"/g) || [])
   .length;
 const fontPreloadCount = (home.match(/rel="preload"[^>]+as="font"/g) || [])
   .length;
+const searchBundles = await glob("dist/_astro/SearchModal.*.js");
+const searchBundle = (
+  await Promise.all(searchBundles.map((file) => readFile(file, "utf8")))
+).join("\n");
 
 const checks = [
   [home.includes('<html lang="ko">'), "home has lang=ko"],
@@ -98,6 +103,15 @@ const checks = [
       'src="/assets/ghost/docker-install/01-freepik__-yongjin-__75455.png"',
     ),
     "home does not load the original 5.55 MB cover PNG",
+  ],
+  [
+    searchBundles.length === 1 &&
+      searchBundle.includes("image/avif") &&
+      searchBundle.includes("image/webp") &&
+      searchBundle.includes("-480.avif") &&
+      searchBundle.includes("-480.webp") &&
+      /loading:[`"']lazy[`"']/.test(searchBundle),
+    "search results use lazy AVIF/WebP cover thumbnails",
   ],
   [
     dockerPost.includes(
