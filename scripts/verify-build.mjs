@@ -55,6 +55,20 @@ const searchModalSource = await readFile(
   "src/layouts/helpers/SearchModal.tsx",
   "utf8",
 );
+const siteConfig = JSON.parse(await readFile("src/config/config.json", "utf8"));
+const paginatedBlogFiles = await glob("dist/blog/page/*/index.html");
+const paginatedBlogPages = await Promise.all(
+  paginatedBlogFiles.map((file) => readFile(file, "utf8")),
+);
+const blogListingPages = [home, ...paginatedBlogPages];
+const blogCardCounts = blogListingPages.map(
+  (html) => (html.match(/<article\b/g) || []).length,
+);
+const paginatedPostLinks = blogListingPages.flatMap((html) =>
+  [...html.matchAll(/<article\b[\s\S]*?href="\/blog\/([^"#?]+)"/g)].map(
+    (match) => match[1],
+  ),
+);
 
 const checks = [
   [home.includes('<html lang="ko">'), "home has lang=ko"],
@@ -138,10 +152,20 @@ const checks = [
       searchModalSource.includes("previouslyFocusedElement?.focus()") &&
       searchModalSource.includes("[data-search-close]") &&
       searchModalSource.includes("isOpen ? closeSearch() : openSearch()") &&
-      !searchModalSource.includes(
-        '<button type="submit" className="sr-only">',
-      ),
+      !searchModalSource.includes('<button type="submit" className="sr-only">'),
     "search dialog traps visible focus and restores keyboard focus",
+  ],
+  [
+    siteConfig.settings.pagination === 4 &&
+      paginatedBlogFiles.length === 2 &&
+      blogCardCounts.length === 3 &&
+      blogCardCounts.every((count) => count === 4) &&
+      blogListingPages.every(
+        (html) => (html.match(/aria-current="page"/g) || []).length === 1,
+      ) &&
+      paginatedPostLinks.length === 12 &&
+      new Set(paginatedPostLinks).size === 12,
+    "home pagination serves 12 unique posts across three 4-card pages",
   ],
   [
     dockerPost.includes(

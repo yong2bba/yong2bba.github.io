@@ -2,6 +2,7 @@
 
 ## Now
 
+- [ ] P2-1 홈 4개 페이지네이션 독립 QA·PR·CI·Pages·공개 회귀검증
 
 ## Next
 
@@ -11,6 +12,9 @@
 
 ## Done
 
+- [x] 홈·후속 페이지를 각각 4개로 구성하고 12개 글 중복·누락 방지 계약 추가
+- [x] 페이지네이션의 잘못된 비현재 `aria-current="page"` 제거
+- [x] P2-1 모바일 1열·데스크톱 2×2·lazy AVIF·page 4 404 로컬 검증
 - [x] P1 PR #13 CI·squash 병합, Pages run `31463708525`, 공개 키보드·시각 회귀검증
 - [x] 모바일 메뉴를 44×44px native button과 `aria-expanded/controls`·Escape 복귀로 교체
 - [x] 검색 dialog에 닫기 버튼·focus trap·초기/복귀 포커스 적용

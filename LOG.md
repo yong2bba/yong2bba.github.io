@@ -2,6 +2,9 @@
 
 ## 2026-08-11
 
+- P2-1에서 전역 pagination을 2→4로 변경해 12개 글을 홈·2·3페이지에 각각 4개씩 배치했다.
+- 정적 계약으로 세 페이지 카드 수, 12개 링크의 중복·누락 0, page 4 미생성, 페이지당 `aria-current` 1개를 RED→GREEN 확인했다.
+- 390px 모바일 한 열과 1440px 데스크톱 2×2를 검증했다. 순차 스크롤 후 AVIF 4/4, broken·overflow·console 오류 0, 시각 QA PASS였다.
 - P1에서 모바일 checkbox/label 메뉴를 44×44px native button으로 교체하고 `aria-expanded/controls`와 Escape 포커스 복귀를 적용했다.
 - 검색 dialog에 44px 닫기 버튼, 초기 포커스, 동적 focus trap, Escape·Ctrl+K trigger 복귀를 적용했다.
 - 정적 접근성 계약을 RED→GREEN으로 확인하고 390×844 실제 Tab·Shift+Tab·Escape·Ctrl+K 키보드 흐름을 PASS했다.

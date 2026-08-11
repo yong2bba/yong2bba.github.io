@@ -1,9 +1,9 @@
 ---
-status: complete
+status: in-progress
 updated: 2026-08-11
-summary: "P1 모바일 메뉴·검색 dialog 키보드 접근성·독립 QA·PR·Pages·공개 회귀검증 완료"
-current_focus: "P1 접근성 완료"
-next_step: "후속 블로그 개선 범위 선택"
+summary: "P2-1 홈 페이지당 4개·페이지네이션 의미 교정 구현과 로컬 검증 완료"
+current_focus: "P2-1 독립 QA·PR·Pages"
+next_step: "독립 QA 후 PR·CI·Pages·공개 페이지네이션 회귀검증"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-후속 블로그 개선 범위를 선택한다.
+P2-1 후보의 독립 QA 후 PR·CI·Pages·공개 페이지네이션 회귀를 검증한다.
 
 ## Needs User Decision
 
@@ -45,6 +45,10 @@ blockers: []
 
 ## Verification
 
+- P2-1 RED→GREEN: 홈·2·3페이지 각각 4개, 12개 글 중복·누락 0, page 4 미생성
+- 페이지마다 `aria-current="page"`는 현재 번호 1개에만 존재
+- 로컬 390px 한 열·1440px 2×2, overflow 0, console error/warning 0, 시각 QA PASS
+- 모바일 순차 스크롤 후 AVIF 4/4, broken image 0
 - 모바일 Tab으로 native 메뉴 버튼 도달, 실제 44×44px, `aria-expanded` 동기화, Escape 닫기·포커스 복귀 PASS
 - 검색 dialog 초기 포커스, Tab·Shift+Tab 순환, Escape·Ctrl+K trigger 복귀 PASS
 - 독립 QA 1차 FAIL 2건(Shift+Tab의 숨은 submit, Cmd/Ctrl+K 비토글)을 수정하고 정확 재현 PASS
