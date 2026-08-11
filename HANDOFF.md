@@ -1,9 +1,9 @@
 ---
-status: in_progress
+status: complete
 updated: 2026-08-11
-summary: "Google Fonts 기반 Noto Sans KR·Space Grotesk·Nanum Gothic Coding 적용 및 로컬 검증 완료"
-current_focus: "사용자 승인된 PR #9 병합과 공개 회귀검증"
-next_step: "PR #9 병합 후 main CI·Pages·Kitesurf 검증"
+summary: "Google Fonts 기반 타이포그래피 적용·PR #9 병합·Pages·Kitesurf 검증 완료"
+current_focus: "없음"
+next_step: "사용자 결정 시 후속 디자인·콘텐츠 작업"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-사용자 승인에 따라 PR #9를 병합하고 main CI·Pages 배포·Kitesurf 한글 렌더링을 회귀검증한다.
+사용자가 원하면 후속 디자인·콘텐츠 작업을 별도 범위로 진행한다.
 
 ## Needs User Decision
 
@@ -45,6 +45,9 @@ blockers: []
 
 ## Verification
 
+- PR #9 병합 완료, main Pages run `31451539767`: build·deploy PASS
+- 공개 URL에서 새 폰트 3종과 기존 Heebo·Signika 제거 확인
+- Kitesurf 공개 재검증: HTTP 200, PNG 420,187바이트, 한글 글리프·이미지·레이아웃 PASS
 - PR #9 `Build and verify`: PASS (42초), deploy는 PR에서 의도대로 skip
 - Chrome computed style: Noto Sans KR·Space Grotesk·Nanum Gothic Coding 로딩 true, 데스크톱·390px overflow 0, broken image 0
 - `pnpm build`: 32 pages built

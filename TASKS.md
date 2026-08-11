@@ -2,7 +2,7 @@
 
 ## Now
 
-- [ ] 승인된 PR #9 병합과 main Pages·Kitesurf 회귀검증
+- 없음
 
 ## Next
 
@@ -12,6 +12,7 @@
 
 ## Done
 
+- [x] PR #9 병합과 main Pages 자동 배포·Kitesurf 한글 렌더링 회귀검증
 - [x] Noto Sans KR·Space Grotesk·Nanum Gothic Coding 적용과 로컬 build/check/브라우저 검증
 - [x] 폰트 변경 PR #9 생성과 `Build and verify` CI 통과
 - [x] Astroplate 템플릿으로 저장소 생성

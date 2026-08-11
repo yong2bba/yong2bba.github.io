@@ -8,6 +8,8 @@
 - Chrome 1440×1000·390×844에서 가로 overflow 0, broken image 0, 실제 코드 3개에 Nanum Gothic Coding 적용을 확인했다.
 - PR #9를 생성했고 `Build and verify`가 42초에 PASS했다. PR deploy job은 의도대로 skip됐다.
 - 사용자가 PR #9 병합을 승인했다.
+- PR #9를 squash 병합했고 main Pages run `31451539767`의 build·deploy가 성공했다.
+- 공개 HTML에서 새 폰트 3종과 기존 폰트 제거를 확인하고 Kitesurf에서 한글·이미지·레이아웃을 PASS로 재검증했다.
 
 ## 2026-08-10
 
