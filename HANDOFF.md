@@ -1,9 +1,9 @@
 ---
-status: review
+status: in_progress
 updated: 2026-08-11
 summary: "Google Fonts 기반 Noto Sans KR·Space Grotesk·Nanum Gothic Coding 적용 및 로컬 검증 완료"
-current_focus: "폰트 변경 PR #9 사용자 검토"
-next_step: "사용자 승인 시 PR #9 병합 후 Pages·Kitesurf 회귀검증"
+current_focus: "사용자 승인된 PR #9 병합과 공개 회귀검증"
+next_step: "PR #9 병합 후 main CI·Pages·Kitesurf 검증"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-PR #9의 시각 결과를 검토한다. 사용자 승인 시 병합하고 Pages 배포와 Kitesurf 한글 렌더링을 회귀검증한다.
+사용자 승인에 따라 PR #9를 병합하고 main CI·Pages 배포·Kitesurf 한글 렌더링을 회귀검증한다.
 
 ## Needs User Decision
 

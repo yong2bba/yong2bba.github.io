@@ -2,7 +2,7 @@
 
 ## Now
 
-- [ ] PR #9 시각 검토와 병합 여부 결정
+- [ ] 승인된 PR #9 병합과 main Pages·Kitesurf 회귀검증
 
 ## Next
 
