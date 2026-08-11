@@ -18,6 +18,8 @@ const homeServerPost = await readFile(
   "utf8",
 );
 const rss = await readFile("dist/rss.xml", "utf8");
+const fontPreloadCount = (home.match(/rel="preload"[^>]+as="font"/g) || [])
+  .length;
 
 const checks = [
   [home.includes('<html lang="ko">'), "home has lang=ko"],
@@ -46,6 +48,17 @@ const checks = [
   [rss.includes("MS Clarity 사용기"), "imported RSS item"],
   [!home.includes("this is meta description"), "sample metadata removed"],
   [!home.includes("Astroplate"), "template branding removed from home"],
+  [
+    home.includes("Noto Sans KR") &&
+      home.includes("Space Grotesk") &&
+      home.includes("Nanum Gothic Coding"),
+    "selected Google fonts are present",
+  ],
+  [
+    !home.includes("Heebo") && !home.includes("Signika"),
+    "legacy fonts are removed",
+  ],
+  [fontPreloadCount === 1, "only the above-fold logo font is preloaded"],
   [home.includes('class="mb-6 break-words"'), "card summaries wrap on mobile"],
   [
     !relatedPost.includes("![돈 아끼려고"),

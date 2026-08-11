@@ -29,6 +29,12 @@ function parseFontString(fontStr) {
   return { name: cleanName, weights };
 }
 
+const fontSubsets = {
+  "Noto Sans KR": ["korean"],
+  "Nanum Gothic Coding": ["korean"],
+  "Space Grotesk": ["latin"],
+};
+
 // Build fonts configuration from theme.json
 const fontsConfig = Object.entries(theme.fonts.font_family)
   .filter(([key]) => !key.includes("_type")) // Filter out type entries
@@ -42,6 +48,7 @@ const fontsConfig = Object.entries(theme.fonts.font_family)
       cssVariable: `--font-${key}`,
       provider: fontProviders.google(),
       weights,
+      subsets: fontSubsets[name] || ["latin"],
       display: "swap",
       fallbacks: [fallback],
     };

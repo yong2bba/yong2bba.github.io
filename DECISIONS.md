@@ -1,5 +1,15 @@
 # Decisions
 
+## 2026-08-11 — Google Fonts 기반 타이포그래피
+
+**Status:** accepted
+
+**Decision:** 본문·UI는 Noto Sans KR 400/500/600/700, 영문 `Yongjin` 로고는 Space Grotesk 600, 코드 블록은 Nanum Gothic Coding 400/700을 사용한다.
+
+**Reason:** 한글을 시스템 폴백에 의존하지 않고 일반 브라우저·에이전트 렌더러에서 일관되게 표시하며, 로고와 코드의 역할을 분리한다.
+
+**Delivery:** Astro Google font provider로 받아 빌드 시 사이트 자산으로 캐시·self-host한다.
+
 ## 2026-08-10 — GitHub 사용자 사이트 저장소
 
 **Status:** accepted
