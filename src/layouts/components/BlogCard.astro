@@ -3,26 +3,31 @@ import config from "@/config/config.json";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { FaRegFolder, FaRegUserCircle } from "react-icons/fa";
-import ImageMod from "./ImageMod.astro";
+import ResponsiveImage from "./ResponsiveImage.astro";
 
 const {
   summary_length,
   blog_folder,
 }: { summary_length: number; blog_folder: string } = config.settings;
-const { data } = Astro.props;
+const {
+  data,
+  priority = false,
+  sizes = "(max-width: 767px) calc(100vw - 20px), (max-width: 1023px) 50vw, 445px",
+} = Astro.props;
 const { title, image, date, author, categories } = data.data;
 ---
 
 <article class="bg-body dark:bg-darkmode-body">
   {
     image && (
-      <ImageMod
+      <ResponsiveImage
         class="mb-6 w-full rounded"
         src={image}
         alt={title}
         width={445}
         height={230}
-        format="webp"
+        sizes={sizes}
+        priority={priority}
       />
     )
   }

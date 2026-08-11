@@ -2,6 +2,12 @@
 
 ## 2026-08-11
 
+- 모바일 Lighthouse에서 홈 Performance 64, LCP 31.3초, 전송량 6.23MB를 확인했다.
+- 첫 대표 PNG가 5.55MB이며 `/assets/` 경로에서 Astro 최적화를 우회하는 것을 원인으로 확인했다.
+- 사용자 승인으로 원본을 보존하고 대표 이미지만 Sharp 파생 AVIF/WebP로 제공하는 작업을 시작했다.
+- 대표 이미지 12개에서 480·768·1200px AVIF/WebP 72개를 빌드 시 생성하고 manifest로 연결했다.
+- 목록과 글 hero에 picture/srcset을 적용하고 첫 LCP 이미지만 eager/high, 이후 이미지는 lazy/auto로 분리했다.
+- 로컬 Lighthouse에서 Performance 88, LCP 3.2초, 총 전송 629KB, 이미지 36KB를 확인했다. 모바일 overflow는 0이었다.
 - 본문·UI를 Noto Sans KR, 영문 로고를 Space Grotesk 600, 코드 블록을 Nanum Gothic Coding으로 변경했다.
 - Astro Google provider의 `korean`·`latin` subset을 명시하고 Heebo·Signika 참조를 제거했다.
 - `pnpm check`, `pnpm build`, `verify:build`, `verify:migration`을 통과했다.

@@ -1,9 +1,9 @@
 ---
-status: complete
+status: review
 updated: 2026-08-11
-summary: "Google Fonts 기반 타이포그래피 적용·PR #9 병합·Pages·Kitesurf 검증 완료"
-current_focus: "없음"
-next_step: "사용자 결정 시 후속 디자인·콘텐츠 작업"
+summary: "대표 이미지 반응형 AVIF/WebP 구현 및 로컬 성능 검증 완료"
+current_focus: "독립 QA와 PR CI"
+next_step: "독립 QA PASS 후 커밋·PR 생성·CI 확인"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-사용자가 원하면 후속 디자인·콘텐츠 작업을 별도 범위로 진행한다.
+독립 QA를 반영하고 PR CI를 확인한 뒤 사용자에게 병합 여부를 보고한다.
 
 ## Needs User Decision
 
@@ -45,6 +45,11 @@ blockers: []
 
 ## Verification
 
+- 대표 이미지 12개 → 480·768·1200px AVIF/WebP 72개 생성, 원본 221개 보존
+- 로컬 Lighthouse mobile: Performance 64→88, LCP 31.3s→3.2s, 총 전송 6.23MB→629KB
+- 이미지 전송 5.64MB→36KB, LCP discovery checklist 전체 PASS
+- Chrome 1440×1000·390×844 시각 QA PASS, 모바일 overflow 0, 첫 currentSrc 480 AVIF
+- `pnpm check`, `pnpm build`, `verify:build`, `verify:migration` PASS
 - PR #9 병합 완료, main Pages run `31451539767`: build·deploy PASS
 - 공개 URL에서 새 폰트 3종과 기존 Heebo·Signika 제거 확인
 - Kitesurf 공개 재검증: HTTP 200, PNG 420,187바이트, 한글 글리프·이미지·레이아웃 PASS
