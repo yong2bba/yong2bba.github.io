@@ -2,6 +2,12 @@
 
 ## 2026-08-11
 
+- P1에서 모바일 checkbox/label 메뉴를 44×44px native button으로 교체하고 `aria-expanded/controls`와 Escape 포커스 복귀를 적용했다.
+- 검색 dialog에 44px 닫기 버튼, 초기 포커스, 동적 focus trap, Escape·Ctrl+K trigger 복귀를 적용했다.
+- 정적 접근성 계약을 RED→GREEN으로 확인하고 390×844 실제 Tab·Shift+Tab·Escape·Ctrl+K 키보드 흐름을 PASS했다.
+- AccessLint에서 P1 신규 위반 0을 확인했다. 소개 페이지 `h1` 1건은 공개 baseline과 동일한 기존 항목이다.
+- 독립 QA 1차에서 숨은 submit 포커스와 Cmd/Ctrl+K 비토글을 병합 차단으로 수용했다. 숨은 submit을 제거하고 shortcut을 toggle로 변경한 뒤 Shift+Tab→44px 닫기 버튼, 두 번째 Ctrl+K→닫기·trigger 복귀를 재현 PASS했다.
+- v2 독립 QA 산출물에서 숨은 submit 0, 메뉴 Enter·Space, 검색 정·역방향 trap, Escape·shortcut toggle, 390×844 overflow·console 오류 0을 확인해 Alpha exact PASS로 판정했다.
 - 검색 `서버` 결과가 60~100px 썸네일 8개에 원본 12.32MiB를 전송하는 P0 결함을 재현했다.
 - `SearchResult.tsx`를 기존 반응형 이미지 manifest에 연결해 AVIF 우선·WebP fallback·lazy/async 썸네일을 제공했다.
 - `verify:build`에 검색 번들의 AVIF/WebP·480px·lazy 계약을 추가하고 RED→GREEN을 확인했다.
