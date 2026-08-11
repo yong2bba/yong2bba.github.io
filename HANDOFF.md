@@ -1,9 +1,9 @@
 ---
-status: in-progress
+status: complete
 updated: 2026-08-11
-summary: "검색 결과 썸네일을 기존 반응형 AVIF/WebP manifest에 연결하고 로컬 검증 완료"
-current_focus: "P0 검색 썸네일 최적화 독립 QA·PR·배포"
-next_step: "독립 QA 후 PR 생성, CI·Pages·공개 검색 회귀검증"
+summary: "검색 결과 썸네일 P0 최적화·PR #11 병합·Pages·공개 회귀검증 완료"
+current_focus: "P0 검색 썸네일 최적화 완료"
+next_step: "후속 블로그 개선 범위 선택"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-검색 썸네일 최적화의 독립 QA를 완료한 뒤 PR·CI·Pages·공개 검색을 검증한다.
+후속 블로그 개선 범위를 선택한다.
 
 ## Needs User Decision
 
@@ -45,6 +45,10 @@ blockers: []
 
 ## Verification
 
+- PR #11 독립 QA exact PASS, 병합 차단 결함 0
+- PR #11 `Build and verify` PASS, squash 병합 완료
+- main Pages run `31460640868` build·deploy PASS
+- 공개 390×844 콜드 `서버` 검색: 결과 8개·AVIF 8/8·77,647B, 원본 요청 0, broken image 0, overflow 0, 시각 QA PASS
 - 검색 `서버` 콜드 검색: 결과 8개·`<picture>` 8개·480px AVIF 8개, 원본 요청 0
 - 검색 이미지 전송량 12.32MiB → 78.0KiB(99.38% 감소), broken image 0, 모바일 overflow 0
 - `pnpm check`, `pnpm build`, `pnpm verify:build`, `pnpm verify:migration` PASS

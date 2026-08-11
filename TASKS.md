@@ -2,7 +2,6 @@
 
 ## Now
 
-- [ ] 검색 썸네일 최적화 독립 QA·PR·CI·Pages·공개 회귀검증
 
 ## Next
 
@@ -12,6 +11,8 @@
 
 ## Done
 
+- [x] 검색 썸네일 P0 독립 QA·PR #11 CI·squash 병합
+- [x] Pages run `31460640868` build/deploy와 공개 콜드 검색 77,647B 회귀검증
 - [x] 검색 결과 원본 이미지를 기존 480px AVIF/WebP manifest에 연결
 - [x] 검색 이미지 정적 계약과 390×844 콜드 검색 전송량·레이아웃 로컬 검증
 - [x] 대표 이미지 12개를 480·768·1200px AVIF/WebP 72개로 빌드 시 파생 생성

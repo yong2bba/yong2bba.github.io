@@ -7,6 +7,10 @@
 - `verify:build`에 검색 번들의 AVIF/WebP·480px·lazy 계약을 추가하고 RED→GREEN을 확인했다.
 - 390×844 콜드 검색에서 결과 8개·AVIF 8개·78.0KiB, 원본 요청 0, broken image 0, overflow 0을 확인했다.
 - 검색 이미지 전송량은 12.32MiB→78.0KiB로 99.38% 감소했고 시각 QA를 PASS했다.
+- 독립 QA에서 격리 clone·390×844 콜드 검색 77.77KiB·원본 요청 0을 재현하고 exact PASS했다.
+- PR #11의 `Build and verify`가 통과해 squash 병합했다.
+- main Pages run `31460640868`의 build·deploy가 성공했다.
+- 공개 390×844 콜드 `서버` 검색에서 AVIF 8/8·77,647바이트·원본 요청 0·broken 0·overflow 0과 시각 QA PASS를 확인했다.
 - 모바일 Lighthouse에서 홈 Performance 64, LCP 31.3초, 전송량 6.23MB를 확인했다.
 - 첫 대표 PNG가 5.55MB이며 `/assets/` 경로에서 Astro 최적화를 우회하는 것을 원인으로 확인했다.
 - 사용자 승인으로 원본을 보존하고 대표 이미지만 Sharp 파생 AVIF/WebP로 제공하는 작업을 시작했다.
