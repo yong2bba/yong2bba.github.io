@@ -2,7 +2,7 @@
 
 ## Now
 
-- [ ] 이미지 최적화 독립 QA와 PR CI 확인
+- [ ] PR #10 병합 후 Pages·공개 Lighthouse·Kitesurf 검증
 
 ## Next
 
@@ -15,6 +15,7 @@
 - [x] 대표 이미지 12개를 480·768·1200px AVIF/WebP 72개로 빌드 시 파생 생성
 - [x] 목록·글 hero에 picture/srcset·LCP priority·lazy loading·정확한 비율 적용
 - [x] build/check/migration·Chrome·Lighthouse 로컬 검증
+- [x] 독립 QA PASS와 PR #10 첫 Build and verify CI 확인
 - [x] PR #9 병합과 main Pages 자동 배포·Kitesurf 한글 렌더링 회귀검증
 - [x] Noto Sans KR·Space Grotesk·Nanum Gothic Coding 적용과 로컬 build/check/브라우저 검증
 - [x] 폰트 변경 PR #9 생성과 `Build and verify` CI 통과
