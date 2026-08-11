@@ -1,9 +1,9 @@
 ---
-status: review
+status: complete
 updated: 2026-08-11
-summary: "대표 이미지 반응형 AVIF/WebP 구현 및 로컬 성능 검증 완료"
-current_focus: "PR #10 최종 CI와 Pages 배포 검증"
-next_step: "PR #10 병합 후 Pages·공개 Lighthouse·Kitesurf 확인"
+summary: "대표 이미지 반응형 AVIF/WebP 구현·PR #10 병합·Pages·Kitesurf 검증 완료"
+current_focus: "없음"
+next_step: "사용자 결정 시 후속 블로그 개선"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-PR #10 최종 CI를 확인하고 main 병합·Pages·공개 Kitesurf 검증을 완료한다.
+사용자 결정 시 제목 계층·목록 밀도·관련 글·시리즈 탐색 중 다음 개선을 선택한다.
 
 ## Needs User Decision
 
@@ -52,6 +52,9 @@ PR #10 최종 CI를 확인하고 main 병합·Pages·공개 Kitesurf 검증을 �
 - `pnpm check`, `pnpm build`, `verify:build`, `verify:migration` PASS
 - 독립 QA PASS: 원본 221개 SHA-256 집계 동일, 72개 변형·26개 페이지 계약 검증, 병합 차단 결함 0
 - PR #10 첫 `Build and verify` CI PASS (run `31457146401`)
+- PR #10 squash 병합 완료, main Pages run `31457648762` build·deploy PASS
+- 공개 Lighthouse mobile 3회 중앙값: Performance 99, LCP 1.505초, 총 625,723바이트, 이미지 34,979바이트, CLS 0.052
+- 공개 3회 모두 LCP discovery PASS·768px AVIF 선택, Kitesurf 390×844 시각 QA PASS
 - PR #9 병합 완료, main Pages run `31451539767`: build·deploy PASS
 - 공개 URL에서 새 폰트 3종과 기존 Heebo·Signika 제거 확인
 - Kitesurf 공개 재검증: HTTP 200, PNG 420,187바이트, 한글 글리프·이미지·레이아웃 PASS

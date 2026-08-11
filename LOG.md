@@ -10,6 +10,9 @@
 - 로컬 Lighthouse에서 Performance 88, LCP 3.2초, 총 전송 629KB, 이미지 36KB를 확인했다. 모바일 overflow는 0이었다.
 - 독립 QA에서 원본 221개 SHA-256 집계 동일, AVIF 36개·WebP 36개, 26개 페이지 로딩 우선순위 계약을 확인하고 PASS했다.
 - PR #10을 열었고 첫 `Build and verify` CI run `31457146401`이 통과했다.
+- PR #10을 squash 병합했고 main Pages run `31457648762`의 build·deploy가 통과했다.
+- 공개 Lighthouse 3회 중앙값은 Performance 99, LCP 1.505초, 총 625,723바이트, 이미지 34,979바이트, CLS 0.052였다.
+- Cloudflare Browser Run(Kitesurf) 390×844에서 한글·이미지·비율·헤더·카드 레이아웃을 시각 PASS했다.
 - 본문·UI를 Noto Sans KR, 영문 로고를 Space Grotesk 600, 코드 블록을 Nanum Gothic Coding으로 변경했다.
 - Astro Google provider의 `korean`·`latin` subset을 명시하고 Heebo·Signika 참조를 제거했다.
 - `pnpm check`, `pnpm build`, `verify:build`, `verify:migration`을 통과했다.
