@@ -1,5 +1,12 @@
 # Log
 
+## 2026-08-11
+
+- 본문·UI를 Noto Sans KR, 영문 로고를 Space Grotesk 600, 코드 블록을 Nanum Gothic Coding으로 변경했다.
+- Astro Google provider의 `korean`·`latin` subset을 명시하고 Heebo·Signika 참조를 제거했다.
+- `pnpm check`, `pnpm build`, `verify:build`, `verify:migration`을 통과했다.
+- Chrome 1440×1000·390×844에서 가로 overflow 0, broken image 0, 실제 코드 3개에 Nanum Gothic Coding 적용을 확인했다.
+
 ## 2026-08-10
 
 - Homebox `yongjin.dev` 복구본에서 Markdown 12개와 관련 자산 221개를 콘텐츠 브랜치로 이전했다.

@@ -77,7 +77,7 @@ const safeJsonLd = jsonLd ? JSON.stringify(jsonLd).replace(/</g, "\u003c") : "";
     {
       fontEntries.map(([key]) => {
         const cssVar = `--font-${key}` as any;
-        return <Font cssVariable={cssVar} preload />;
+        return <Font cssVariable={cssVar} preload={key === "logo"} />;
       })
     }
     <meta

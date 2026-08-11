@@ -31,10 +31,12 @@
   },
   "fonts": {
     "font_family": {
-      "primary": "Heebo:wght@400;600",
+      "primary": "Noto+Sans+KR:wght@400;500;600;700",
       "primary_type": "sans-serif",
-      "secondary": "Signika:wght@500;700",
-      "secondary_type": "sans-serif"
+      "logo": "Space+Grotesk:wght@600",
+      "logo_type": "sans-serif",
+      "mono": "Nanum+Gothic+Coding:wght@400;700",
+      "mono_type": "monospace"
     },
     "font_size": {
       "base": "16",

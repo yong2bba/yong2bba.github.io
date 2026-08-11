@@ -1,9 +1,9 @@
 ---
-status: complete
-updated: 2026-08-10
-summary: "Homebox yongjin.dev 글 12개와 자산 221개 이전·Pages 공개 완료"
-current_focus: "없음"
-next_step: "사용자 결정 시 최종 블로그명·도메인 확정"
+status: in_progress
+updated: 2026-08-11
+summary: "Google Fonts 기반 Noto Sans KR·Space Grotesk·Nanum Gothic Coding 적용 및 로컬 검증 완료"
+current_focus: "폰트 변경 PR 생성과 CI 검증"
+next_step: "브랜치 커밋·PR 생성 후 CI 결과 확인"
 blockers: []
 ---
 
@@ -11,6 +11,9 @@ blockers: []
 
 ## Last Work
 
+- 본문·UI를 Noto Sans KR 400/500/600/700, 영문 로고를 Space Grotesk 600, 코드 블록을 Nanum Gothic Coding 400/700으로 변경했다.
+- Astro Google font provider에 한글·라틴 subset을 명시하고 기존 Heebo·Signika 의존성을 제거했다.
+- 1440px·390px 홈과 코드 블록을 Chrome에서 검증해 폰트 로딩, 깨진 이미지 0, 가로 overflow 0을 확인했다.
 - Homebox 복구본의 Markdown 12개를 기존 slug·날짜·태그·본문을 보존해 `src/content/blog`로 이전했다.
 - 관련 자산 221개를 `public/assets/ghost`로 이전하고 Ghost 이전 안내문만 제거했다.
 - 임시 출시 글 `post-1.md`를 제거했다.
@@ -30,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-사용자가 원하면 최종 블로그명·소개 문구·커스텀 도메인을 별도 범위로 확정한다.
+`feat/google-font-typography`를 커밋·푸시하고 PR CI를 확인한다. 병합·배포는 별도 승인 전 수행하지 않는다.
 
 ## Needs User Decision
 

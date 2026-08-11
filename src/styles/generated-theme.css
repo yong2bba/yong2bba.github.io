@@ -26,8 +26,9 @@
   --color-darkmode-text-light: #B4AFB6;
 
   /* === Font Families === */
-  --font-primary: Heebo, sans-serif;
-  --font-secondary: Signika, sans-serif;
+  --font-primary: Noto Sans KR, sans-serif;
+  --font-logo: Space Grotesk, sans-serif;
+  --font-mono: Nanum Gothic Coding, monospace;
 
   /* === Font Sizes === */
   --text-base: 16px;
