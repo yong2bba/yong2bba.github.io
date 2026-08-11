@@ -1,9 +1,9 @@
 ---
-status: complete
+status: in-progress
 updated: 2026-08-11
-summary: "대표 이미지 반응형 AVIF/WebP 구현·PR #10 병합·Pages·Kitesurf 검증 완료"
-current_focus: "없음"
-next_step: "사용자 결정 시 후속 블로그 개선"
+summary: "검색 결과 썸네일을 기존 반응형 AVIF/WebP manifest에 연결하고 로컬 검증 완료"
+current_focus: "P0 검색 썸네일 최적화 독립 QA·PR·배포"
+next_step: "독립 QA 후 PR 생성, CI·Pages·공개 검색 회귀검증"
 blockers: []
 ---
 
@@ -33,7 +33,7 @@ blockers: []
 
 ## Next Safe Action
 
-사용자 결정 시 제목 계층·목록 밀도·관련 글·시리즈 탐색 중 다음 개선을 선택한다.
+검색 썸네일 최적화의 독립 QA를 완료한 뒤 PR·CI·Pages·공개 검색을 검증한다.
 
 ## Needs User Decision
 
@@ -45,6 +45,9 @@ blockers: []
 
 ## Verification
 
+- 검색 `서버` 콜드 검색: 결과 8개·`<picture>` 8개·480px AVIF 8개, 원본 요청 0
+- 검색 이미지 전송량 12.32MiB → 78.0KiB(99.38% 감소), broken image 0, 모바일 overflow 0
+- `pnpm check`, `pnpm build`, `pnpm verify:build`, `pnpm verify:migration` PASS
 - 대표 이미지 12개 → 480·768·1200px AVIF/WebP 72개 생성, 원본 221개 보존
 - 로컬 Lighthouse mobile: Performance 64→88, LCP 31.3s→3.2s, 총 전송 6.23MB→629KB
 - 이미지 전송 5.64MB→36KB, LCP discovery checklist 전체 PASS
